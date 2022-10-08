@@ -1,0 +1,40 @@
+<!--index.wxml-->
+<view class="container">
+<view class="form-wrapper">
+  <form report-submit="formSubmit">
+    <view>{{msg}}</view>
+    <view><input type="text" placeholder="全名"/></view>
+    <view><input type="text" placeholder="小名"/></view>
+    <view><input type="text" placeholder="性别"/></view>
+    <view><input type="text" placeholder="生日"/></view>
+    <view><input type="text" placeholder="分类"/></view>
+    <view><input type="text" placeholder="父母"/></view>
+    <view><input type="text" placeholder="备注"/></view>
+    <view class="btn-area">
+      <button form-type="submit" type="primary">确认</button>
+      <button form-type="reset">重置</button>
+      <button bindtap="changeMsg">changeMsg</button>
+    </view>
+  </form>
+</view>
+  <!-- <view class="userinfo">
+    <block wx:if="{{canIUseOpenData}}">
+      <view class="userinfo-avatar" bindtap="bindViewTap">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <open-data type="userNickName"></open-data>
+    </block>
+    <block wx:elif="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view> -->
+</view>
