@@ -4,7 +4,9 @@
 // getApp() get instance
 
 App<IAppOption>({
-  globalData: {},
+  globalData: {
+    testArr: [4, 3, 2, 1]
+  },
   onLaunch() {
     // 展示本地存储能力
     const logs = wx.getStorageSync('logs') || []

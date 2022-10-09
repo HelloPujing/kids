@@ -5,6 +5,7 @@ const app = getApp<IAppOption>()
 Page({
   data: {
     motto: 'Hello World',
+    testArr: app.globalData.testArr || [],
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
