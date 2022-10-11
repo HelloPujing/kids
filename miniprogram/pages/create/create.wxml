@@ -1,19 +1,14 @@
 <!--index.wxml-->
 <view class="container">
-<view class="form-wrapper">
-  <form report-submit="formSubmit">
-    <view><input placeholder="全名" model:value="{{fullName}}"/></view>
-    <view><input placeholder="小名" model:value="{{nickName}}"/></view>
-    <view><input placeholder="性别" model:value="{{gender}}"/></view>
-    <view><input placeholder="生日" model:value="{{birth}}"/></view>
-    <view><input placeholder="分类" model:value="{{category}}"/></view>
-    <view><input placeholder="父母" model:value="{{parents}}"/></view>
-    <view><input placeholder="备注" model:value="{{remark}}"/></view>
-    <view class="btn-area">
-      <button form-type="submit" type="primary">确认</button>
-      <button form-type="reset">重置</button>
-      <button bindtap="changeMsg">changeMsg</button>
+  <view class="main-wrapper">
+    <view><input class="nickname" placeholder="宝贝昵称" placeholder-class="placeholder" model:value="{{nickName}}" /></view>
+    <view>
+      <view wx:for="{{tags}}" style="background: {{ item.color }}" class="tag">{{item.name}}</view>
     </view>
-  </form>
-</view>
+    <view><input placeholder="全名" placeholder-class="placeholder" model:value="{{fullName}}" /></view>
+    <view><input placeholder="性别" placeholder-class="placeholder" model:value="{{gender}}" /></view>
+    <view><input placeholder="生日" placeholder-class="placeholder" model:value="{{birth}}" /></view>
+    <view><input placeholder="父母" placeholder-class="placeholder" model:value="{{parents}}" /></view>
+    <view><input placeholder="备注" placeholder-class="placeholder" model:value="{{remark}}" /></view>
+  </view>
 </view>
