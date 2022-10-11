@@ -1,8 +1,8 @@
 type Gender = 0 | 1; // 0 femail 1 mail
 
 type KidBasic = {
-  fullName: string,
-  nickName: string,
+  fullname: string,
+  nickname: string,
   gender: Gender, 
   birth: string,
 }

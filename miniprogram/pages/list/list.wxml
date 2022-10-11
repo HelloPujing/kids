@@ -1,0 +1,15 @@
+<!--pages/list/list.wxml-->
+<view class="container">
+  <view wx:for="{{kids}}" wx:key="{{id}}" class="kid-bar">
+    <view class="head">
+    <image src="{{item.gender === 1 ? icon_boy : icon_girl}}"></image>
+    </view>
+    <view class="info">
+      <text class="info-main">{{item.nickname}}</text>
+      <view class="side-info">
+        <text>{{'5 years old'}}</text>
+      <text>{{'Kindergarten 3'}}</text>
+      </view>
+    </view>
+  </view>
+</view>
