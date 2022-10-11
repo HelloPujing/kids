@@ -1,14 +1,27 @@
 <!--index.wxml-->
 <view class="container">
   <view class="main-wrapper">
-    <view><input class="nickname" placeholder="宝贝昵称" placeholder-class="placeholder" model:value="{{nickName}}" /></view>
+    <view>
+      <input class="nickname-input" placeholder="宝贝昵称" placeholder-class="placeholder" model:value="{{nickName}}" />
+    </view>
     <view>
       <view wx:for="{{tags}}" style="background: {{ item.color }}" class="tag">{{item.name}}</view>
     </view>
-    <view><input placeholder="全名" placeholder-class="placeholder" model:value="{{fullName}}" /></view>
-    <view><input placeholder="性别" placeholder-class="placeholder" model:value="{{gender}}" /></view>
-    <view><input placeholder="生日" placeholder-class="placeholder" model:value="{{birth}}" /></view>
-    <view><input placeholder="父母" placeholder-class="placeholder" model:value="{{parents}}" /></view>
-    <view><input placeholder="备注" placeholder-class="placeholder" model:value="{{remark}}" /></view>
+    <view class="bar-wrapper">
+      <text>Fullname</text>
+      <input placeholder="全名" class="fullname-input" placeholder-class="placeholder" model:value="{{fullName}}" />
+    </view>
+    <view class="bar-wrapper">
+      <text>Gender</text>
+      <input placeholder="性别" placeholder-class="placeholder" model:value="{{gender}}" />
+    </view>
+    <view class="bar-wrapper">
+      <text>Birth</text>
+      <input placeholder="生日" placeholder-class="placeholder" model:value="{{birth}}" />
+    </view>
+    <view class="bar-wrapper">
+      <text>Remark</text>
+      <textarea placeholder="备注" class="remark" placeholder-class="placeholder" model:value="{{remark}}" />
+    </view>
   </view>
 </view>

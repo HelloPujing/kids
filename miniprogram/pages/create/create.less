@@ -1,39 +1,68 @@
 /**index.wxss**/
-@font-placeholder: rgba(0,0,0,.25);
+@font-placeholder: rgba(0, 0, 0, .25);
 @font-normal: #3f3f3f;
 
 .container {
-  padding: 20px;
+  padding: 40rpx;
 }
-.main-wrapper{
+
+.main-wrapper {
   color: @font-normal;
-  &>view{
-    margin-top: 16px;
+
+  &>view {
+    margin-top: 32rpx;
+    font-size: 24rpx;
   }
 }
 
-.nickname{
+.bar-wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  &>text {
+    font-weight: bold;
+  }
+}
+
+
+.nickname-input {
   width: 100%;
-  height: 68px;
-  line-height: 68px;
+  height: 136rpx;
+  line-height: 136rpx;
   background-color: #F1857B;
-  border-radius: 30px;
+  border-radius: 60rpx;
   text-align: center;
+  font-size: 28rpx;
 }
 
-.placeholder{
+.placeholder {
   color: @font-placeholder;
 
 }
 
-.tag{
-  margin-right: 8px;
-  margin-bottom: 8px;
+.tag {
+  margin-right: 16rpx;
+  margin-bottom: 16rpx;
   display: inline-block;
-  padding: 0 16px;
-  height: 30px;
-  line-height: 30px;
+  padding: 0 28rpx;
+  height: 60rpx;
+  line-height: 60rpx;
   background-color: violet;
-  border-radius: 15px;
+  border-radius: 30rpx;
   color: @font-placeholder;
+}
+
+.fullname-input {
+  background-color: #DFDAD7;
+  border-radius: 32rpx;
+  padding: 0 28rpx;
+  width: 200rpx;
+}
+
+.remark {
+  background-color: #DFDAD7;
+  border-radius: 32rpx;
+  padding: 28rpx;
+  width: 200rpx;
+  height: 100rpx;
 }
