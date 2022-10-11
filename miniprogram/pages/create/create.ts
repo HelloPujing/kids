@@ -29,6 +29,17 @@ const TAGS = [
   },
 ];
 
+const GENDERS = [
+  {
+    value: 0,
+    name: 'Girl'
+  },
+  {
+    value: 1,
+    name: 'Boy'
+  }
+];
+
 Page({
   data: {
     nickName: '',
@@ -42,8 +53,11 @@ Page({
     ],
     fullName: '',
     gender: 1,
-    birth: ''
+    genders: GENDERS,
+    birth: 'birth'
   },
   // 事件处理函数
-  
+  bindDateChange: function(e) {
+    this.setData({ birth: e.detail.value })
+  }
 })

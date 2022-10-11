@@ -13,11 +13,22 @@
     </view>
     <view class="bar-wrapper">
       <text>Gender</text>
-      <input placeholder="性别" placeholder-class="placeholder" model:value="{{gender}}" />
+      <view class="gender">
+        <radio-group>
+          <label>
+            <radio value="{{0}}" checked>Girl</radio>
+          </label>
+          <label>
+            <radio value="{{1}}">Boy</radio>
+          </label>
+        </radio-group>
+      </view>
     </view>
     <view class="bar-wrapper">
       <text>Birth</text>
-      <input placeholder="生日" placeholder-class="placeholder" model:value="{{birth}}" />
+      <picker mode="date" value="{{birth}}" start="1900-09-01"  bindchange="bindDateChange">
+        <view class="picker">{{birth}}</view>
+      </picker>
     </view>
     <view class="bar-wrapper">
       <text>Remark</text>
