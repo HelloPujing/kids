@@ -1,5 +1,5 @@
 /**index.wxss**/
-@font-placeholder: rgba(0, 0, 0, .25);
+@font-placeholder: rgba(110, 78, 78, 0.25);
 @font-normal: #3f3f3f;
 
 .container {
@@ -8,10 +8,10 @@
 
 .main-wrapper {
   color: @font-normal;
+  font-size: 28rpx;
 
   &>view {
     margin-top: 32rpx;
-    font-size: 24rpx;
   }
 }
 
@@ -32,7 +32,8 @@
   background-color: #F1857B;
   border-radius: 60rpx;
   text-align: center;
-  font-size: 28rpx;
+  font-size: 32rpx;
+  font-weight: bold;
 }
 
 .placeholder {
@@ -55,14 +56,42 @@
 .fullname-input {
   background-color: #DFDAD7;
   border-radius: 32rpx;
-  padding: 0 28rpx;
+  padding: 6px 28rpx;
   width: 200rpx;
 }
 
 .gender {
-  label{
-    margin-left: 36rpx;
+  border-radius: 10rpx;
+  background-color: #f1f1f1;;
+  radio{
+    position: relative;
+    text-align: center;
+    .radio-girl{
+      position: absolute;
+      left: 60rpx;
+      top: 5rpx;
+    }
   }
+  .wx-radio-input{
+    margin: 0;
+    border-radius: 10rpx;
+    border: none;
+    width: 80px;
+    background-color: #f1f1f1;
+  }  
+  .wx-radio-input::before{
+    content: none;
+  }  
+  .wx-radio-input-checked{
+    margin: 0;
+    border-radius: 10rpx;
+    // background-color: #F1857B  !important;
+  }
+  .wx-radio-input-checked::before{
+    content: none !important;
+  }  
+
+
 }
 
 .remark {

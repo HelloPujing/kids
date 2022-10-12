@@ -1,9 +1,16 @@
 let kids: Kid[] = [
   {
-    id: '1',
+    id: '0',
     fullname: '易星旻',
     nickname: 'Bianca',
     gender: 0, // 0 femail 1 mail
+    birth: '2017/04/08',
+  },
+  {
+    id: '1',
+    fullname: '小来来',
+    nickname: '小来来',
+    gender: 1, // 0 femail 1 mail
     birth: '2017/04/08',
   },
   {

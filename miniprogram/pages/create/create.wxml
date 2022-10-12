@@ -16,10 +16,10 @@
       <view class="gender">
         <radio-group>
           <label>
-            <radio value="{{0}}" checked>Girl</radio>
+            <radio color="{{theme}}" value="{{0}}" checked><label class="radio-girl">Girl</label></radio>
           </label>
           <label>
-            <radio value="{{1}}">Boy</radio>
+            <radio color="{{theme}}"  value="{{1}}"><label class="radio-girl">Boy</label></radio>
           </label>
         </radio-group>
       </view>

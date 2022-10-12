@@ -42,6 +42,7 @@ const GENDERS = [
 
 Page({
   data: {
+    theme: '#F1857B',
     nickName: '',
     tags: TAGS,
     category: '',
