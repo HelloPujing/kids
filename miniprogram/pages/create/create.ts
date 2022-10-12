@@ -24,7 +24,7 @@ const TAGS = [
     color: '#C8ACD5'
   },
   {
-    name: 'his/her friend',
+    name: 'kid\'s friend',
     color: '#F79F77'
   },
 ];
@@ -55,7 +55,7 @@ Page({
     fullName: '',
     gender: 1,
     genders: GENDERS,
-    birth: 'birth'
+    birth: '2020-01-01'
   },
   // 事件处理函数
   bindDateChange: function(e) {
