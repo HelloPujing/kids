@@ -2,32 +2,7 @@
 // 获取应用实例
 // Pupuu https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html
 // Page({}) register data、customer data、events
-const TAGS = [
-  {
-    name: 'friend’s kid',
-    color: '#F1857B'
-  },
-  {
-    name: 'relative’s kid',
-    color: '#FAD85A'
-  },
-  {
-    name: 'colleague’s kid',
-    color: '#A5DE80'
-  },
-  {
-    name: 'schoolmate’s kid',
-    color: '#BAE6F1'
-  },
-  {
-    name: 'neighbour’s kid',
-    color: '#C8ACD5'
-  },
-  {
-    name: 'kid\'s friend',
-    color: '#F79F77'
-  },
-];
+let tags = require('../../data/tags');
 
 const GENDERS = [
   {
@@ -40,11 +15,13 @@ const GENDERS = [
   }
 ];
 
+
 Page({
   data: {
-    theme: '#F1857B',
     nickName: '',
-    tags: TAGS,
+    tagId: '1',
+    theme: '',
+    tags: tags,
     category: '',
     categories: [
       {
@@ -57,8 +34,20 @@ Page({
     genders: GENDERS,
     birth: '2020-01-01'
   },
+  // 生命周期
+  onReady(){
+    const tag = (tags || []).find(tag => tag.id === this.data.tagId);
+    const color = (tag || {}).color || '#F1857B';
+     this.setData({theme: color})
+  },
+
   // 事件处理函数
   bindDateChange: function(e) {
     this.setData({ birth: e.detail.value })
+  },
+  bindTagChange: function(e, v) {
+    const {theme, value: tagId} = e.target.dataset || {};
+    console.log(theme, tagId);
+    this.setData({theme: theme});
   }
 })

@@ -2,16 +2,13 @@
 <view class="container">
   <view class="main-wrapper">
     <view>
-      <input 
-      class="nickname-input" 
-      placeholder="宝贝昵称" 
-      placeholder-class="placeholder" 
-      model:value="{{nickName}}" 
-      style="background-color: {{theme}}"
-    />
+      <input class="nickname-input" placeholder="宝贝昵称" placeholder-class="placeholder" model:value="{{nickName}}" style="background-color: {{theme}}" />
     </view>
     <view>
-      <view wx:for="{{tags}}" style="background: {{ item.color }}" class="tag">{{item.name}}</view>
+      <view wx:for="{{tags}}" wx:key="{{index}}" style="background: {{ item.color }}" class="tag" bind:tap="bindTagChange"
+      data-theme="{{item.color}}"
+      data-value="{{item.id}}"
+      >{{item.name}}</view>
     </view>
     <view class="bar-wrapper">
       <text>Fullname</text>
@@ -25,14 +22,14 @@
             <radio color="{{theme}}" value="{{0}}" checked><label class="radio-girl">Girl</label></radio>
           </label>
           <label>
-            <radio color="{{theme}}"  value="{{1}}"><label class="radio-girl">Boy</label></radio>
+            <radio color="{{theme}}" value="{{1}}"><label class="radio-girl">Boy</label></radio>
           </label>
         </radio-group>
       </view>
     </view>
     <view class="bar-wrapper">
       <text>Birth</text>
-      <picker mode="date" value="{{birth}}" start="1900-09-01"  bindchange="bindDateChange">
+      <picker mode="date" value="{{birth}}" start="1900-09-01" bindchange="bindDateChange">
         <view class="picker">{{birth}}</view>
       </picker>
     </view>
@@ -40,5 +37,6 @@
       <text>Remark</text>
       <textarea placeholder="备注" class="remark" placeholder-class="placeholder" model:value="{{remark}}" />
     </view>
+    <Button class="confirm" type="primary">测试submit</Button>
   </view>
 </view>
