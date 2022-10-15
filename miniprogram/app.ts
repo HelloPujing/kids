@@ -5,7 +5,7 @@
 
 App<IAppOption>({
   globalData: {
-    testArr: [4, 3, 2, 1]
+    tempKid: undefined
   },
   onLaunch() {
     // 展示本地存储能力

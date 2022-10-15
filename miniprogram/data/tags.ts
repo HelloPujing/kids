@@ -1,4 +1,4 @@
-const TAGS = [
+const TAGS: Tag[] = [
   {
     id: '1',
     name: 'friend’s kid',

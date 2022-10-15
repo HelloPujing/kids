@@ -30,7 +30,7 @@ Page({
       }
     ],
     fullname: '',
-    gender: 1,
+    gender: 0,
     genders: GENDERS,
     birth: '2020-01-01'
   },
@@ -66,8 +66,8 @@ Page({
     this.setData({ remark: e.detail.value });
   },
   bindSubmit: function(){
-    const { nickname, fullname, tagId, gender, birth, remark } = this.data || {};
-    const data = {nickname, fullname, tagId, gender, birth, remark};
-    console.log(data);
+    let app = getApp();
+    app.globalData.tempKid = this.data;
+    wx.navigateBack();
   }
 })

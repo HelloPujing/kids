@@ -1,8 +1,11 @@
+import { fmtKidList } from "./util";
+
 // pages/list/list.ts
+let { calcAge } = require("./util")
+
 let KIDS = require('../../data/kids');
 
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -16,7 +19,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-
   },
 
   /**
@@ -30,7 +32,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    // add kid
+    const app = getApp();
+    const kid = app.globalData.tempKid;
+    const kids = !!kid ? [kid, ...this.data.kids] : this.data.kids;
 
+    // format kids
+    const fmtKids = fmtKidList(kids);
+
+    this.setData({
+      kids: fmtKids
+    }, () => {
+      const app = getApp();
+      app.globalData.tempKid = undefined;
+    });
   },
 
   /**
@@ -65,6 +80,13 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {
+    return {
+      title: '记录身边好朋友的孩子信息吧',
+      path: '/pages/list?id=test'
+    }
+  },
 
+  handleAdd: function(){
+    wx.navigateTo({ url: '/pages/create/create' });
   }
 })

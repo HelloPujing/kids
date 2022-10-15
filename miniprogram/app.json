@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/list/list",
     "pages/create/create",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/list/list"
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -16,10 +16,6 @@
       {
         "pagePath": "pages/list/list",
         "text": "列表"
-      },
-      {
-        "pagePath": "pages/create/create",
-        "text": "创建"
       },
       {
         "pagePath": "pages/index/index",

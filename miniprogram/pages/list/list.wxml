@@ -1,13 +1,14 @@
 <!--pages/list/list.wxml-->
 <view class="container">
-  <view wx:for="{{kids}}" wx:key="{{id}}" class="kid-bar">
+  <button type="primary" class="add" bindtap="handleAdd">测试Add</button>
+  <view wx:for="{{kids}}" wx:key="{{id}}" class="kid-bar" style="background-color: {{ item._color }}">
     <view class="head">
     <image src="{{item.gender === 1 ? icon_boy : icon_girl}}"></image>
     </view>
     <view class="info">
       <text class="info-main">{{item.nickname}}</text>
       <view class="side-info">
-        <text>{{'5 years old'}}</text>
+        <text>{{item._age + ' years old'}}</text>
       <text>{{'Kindergarten 3'}}</text>
       </view>
     </view>
