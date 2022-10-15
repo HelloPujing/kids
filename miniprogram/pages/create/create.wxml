@@ -2,7 +2,7 @@
 <view class="container">
   <view class="main-wrapper">
     <view>
-      <input class="nickname-input" placeholder="宝贝昵称" placeholder-class="placeholder" model:value="{{nickName}}" style="background-color: {{theme}}" />
+      <input class="nickname-input" placeholder="宝贝昵称" placeholder-class="placeholder" model:value="{{nickName}}" style="background-color: {{theme}}" bindinput="bindNicknameChange" />
     </view>
     <view>
       <view wx:for="{{tags}}" wx:key="{{index}}" style="background: {{ item.color }}" class="tag" bind:tap="bindTagChange"
@@ -12,12 +12,12 @@
     </view>
     <view class="bar-wrapper">
       <text>Fullname</text>
-      <input placeholder="全名" class="fullname-input" placeholder-class="placeholder" model:value="{{fullName}}" />
+      <input placeholder="全名" class="fullname-input" placeholder-class="placeholder" model:value="{{fullName}}" bindinput="bindFullnameChange"/>
     </view>
     <view class="bar-wrapper">
       <text>Gender</text>
       <view class="gender">
-        <radio-group>
+        <radio-group bindchange="bindGenderChange">
           <label>
             <radio color="{{theme}}" value="{{0}}" checked><label class="radio-girl">Girl</label></radio>
           </label>
@@ -35,8 +35,8 @@
     </view>
     <view class="bar-wrapper">
       <text>Remark</text>
-      <textarea placeholder="备注" class="remark" placeholder-class="placeholder" model:value="{{remark}}" />
+      <textarea placeholder="备注" class="remark" placeholder-class="placeholder" model:value="{{remark}}" bindinput="bindRemarkChange"/>
     </view>
-    <Button class="confirm" type="primary">测试submit</Button>
+    <Button class="confirm" type="primary" bindtap="bindSubmit">测试submit</Button>
   </view>
 </view>
