@@ -55,9 +55,8 @@ Page({
   bindFullnameChange: function(e) {
     this.setData({ fullname: e.detail.value });
   },
-  bindGenderChange: function(arg1, arg2) {
-    console.log(arg1, arg2)
-    // this.setData({ gender: e.detail.value });
+  bindGenderChange: function(e) {
+    this.setData({ gender: Number(e.detail.value) });
   },
   bindDateChange: function(e) {
     this.setData({ birth: e.detail.value })
