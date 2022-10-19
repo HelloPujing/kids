@@ -9,7 +9,7 @@
       <text class="info-main">{{item.nickname}}</text>
       <view class="side-info">
         <text>{{item._age}}</text>
-      <text>{{'Kindergarten 3'}}</text>
+      <text>{{item._grade}}</text>
       </view>
     </view>
   </view>
