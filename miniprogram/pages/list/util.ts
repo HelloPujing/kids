@@ -1,5 +1,5 @@
 const TAGS = require("../../data/tags");
-const SCHOOL_AGE = require("../../data/schoolAge");
+const SCHOOL_AGE_MAP = require("../../data/schoolAge");
 
 /*
 * @param list from api
@@ -11,7 +11,7 @@ export const fmtKidList = (list: KidView[]) => {
   list.forEach(kid => {
     // fmt age
     kid._age = calcAge(new Date(kid.birth));
-
+    
     // fmt color
     const index = (TAGS || []).findIndex(tag => tag.id === kid.tagId);
     kid._color = index > 0 ? TAGS[index].color : TAGS[0].color;
@@ -67,7 +67,7 @@ export const calGrade = (birth: Date) => {
   if(schoolAge < 0) schoolAge = 0;
   if(schoolAge > 22) schoolAge = 22;
 
-  const [, grade_cn] = SCHOOL_AGE.get(schoolAge);
+  const [, grade_cn] = SCHOOL_AGE_MAP.get(schoolAge);
     
   return grade_cn;
 }

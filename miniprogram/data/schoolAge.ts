@@ -1,4 +1,5 @@
-const SCHOOL_AGE = new Map([
+// school age -> grade
+const SCHOOL_AGE_MAP = new Map([
   [0, ['infant period', '学龄前']],
   [1, ['infant period', '学龄前']],
   [2, ['infant period', '学龄前']],
@@ -24,4 +25,4 @@ const SCHOOL_AGE = new Map([
   [22, ['graduated', '大学毕业']],
 ]);
 
-module.exports = SCHOOL_AGE
+module.exports = SCHOOL_AGE_MAP
