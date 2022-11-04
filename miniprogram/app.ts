@@ -5,7 +5,9 @@
 
 App<IAppOption>({
   globalData: {
-    tempKid: undefined
+    tempKid: undefined,
+    hostApi: 'https://kid-book-api.metahmo.com/api',
+    hostCdnImage: 'kid-cdn.metahmo.com/image/sys'
   },
   onLaunch() {
     // 展示本地存储能力
@@ -16,6 +18,7 @@ App<IAppOption>({
     // 登录
     wx.login({
       success: res => {
+        console.log("-----------")
         console.log(res.code)
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       },
