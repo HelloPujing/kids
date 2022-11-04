@@ -11,8 +11,8 @@ Page({
    */
   data: {
     kids: KIDS,
-    icon_girl: 'https://bb-mbb.oss-cn-hangzhou.aliyuncs.com/tmp/girl.png',
-    icon_boy: 'https://bb-mbb.oss-cn-hangzhou.aliyuncs.com/tmp/boy.png'
+    icon_girl: 'https://kid-book.oss-cn-hangzhou.aliyuncs.com/image-sys/girl.png',
+    icon_boy: 'https://kid-book.oss-cn-hangzhou.aliyuncs.com/image-sys/boy.png'
   },
 
   /**
@@ -59,7 +59,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-
+    
   },
 
   /**
@@ -87,6 +87,31 @@ Page({
   },
 
   handleAdd: function(){
-    wx.navigateTo({ url: '/pages/create/create' });
+    // wx.navigateTo({ url: '/pages/create/create' });
+    wx.showLoading({ title: '加载中' });
+    const app = getApp();
+    const url = '/account/signin/wechat'
+    const test = new Promise((resolve, reject) => {
+      wx.request({
+        url:  (getApp()).globalData.hostApi + url,
+        method: 'POST',
+        data: {},
+        success: (res) => {
+          const {data, errMsg, cookies, statusCode} = res || {};
+          console.log(res);
+
+          if(statusCode == 200) resolve(data);
+          reject({ statusCode, errMsg });
+        },
+        fail: (res) => {
+          wx.showToast({ title: '请求失败，请稍后再试' });
+          reject(res);
+          console.log(res);
+        },
+        complete: () => {
+          // wx.hideLoading();
+        }
+      });
+    })
   }
 })
