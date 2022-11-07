@@ -1,5 +1,3 @@
-const hostApi = (getApp()).globalData.hostApi
-
 type OptionsType = {
   method: 'POST' | 'GET',
   data: any
@@ -18,7 +16,7 @@ export type RejectType = {
 export function request(api: string, options: OptionsType){
   return new Promise((resolve, reject) => {
     wx.request({
-      url: hostApi + api,
+      url: (getApp()).globalData.hostApi + api,
       method: options.method,
       data: options.method === 'GET' ? options.data : JSON.stringify(options.data),
       success: (res) => {

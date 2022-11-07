@@ -3,6 +3,8 @@
 // App({}) reigister global data and funcs
 // getApp() get instance
 
+const { post, api } = require("./api/network");
+
 App<IAppOption>({
   globalData: {
     tempKid: undefined,
@@ -20,8 +22,19 @@ App<IAppOption>({
       success: res => {
         console.log("-----------")
         console.log(res.code)
+        // code5分钟时效，是微信生成的获取用户id的凭证
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        const options = {
+          data: { code: res.code }
+        }
+        post(api.accountSigninWechat, options)
+          .then((res: any) => console.log('成功', res))
+          .catch((err: any) => {
+            console.log('失败')
+            console.log(err)
+          });
       },
     })
   },
 })
+

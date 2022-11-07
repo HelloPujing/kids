@@ -1,7 +1,6 @@
 import { fmtKidList } from "./util";
 
 // pages/list/list.ts
-const { post, api } = require("../../api/network");
 let KIDS = require('../../data/kids');
 
 Page({
@@ -87,12 +86,5 @@ Page({
 
   handleAdd: function(){
     // wx.navigateTo({ url: '/pages/create/create' });
-    
-    post(api.accountSigninWechat)
-      .then(() => console.log('成功'))
-      .catch((err: any) => {
-        console.log('失败')
-        console.log(err)
-      });
   }
 })
