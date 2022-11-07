@@ -1,8 +1,7 @@
 import { fmtKidList } from "./util";
 
 // pages/list/list.ts
-let { calcAge } = require("./util")
-
+const { post, api } = require("../../api/network");
 let KIDS = require('../../data/kids');
 
 Page({
@@ -88,30 +87,12 @@ Page({
 
   handleAdd: function(){
     // wx.navigateTo({ url: '/pages/create/create' });
-    wx.showLoading({ title: '加载中' });
-    const app = getApp();
-    const url = '/account/signin/wechat'
-    const test = new Promise((resolve, reject) => {
-      wx.request({
-        url:  (getApp()).globalData.hostApi + url,
-        method: 'POST',
-        data: {},
-        success: (res) => {
-          const {data, errMsg, cookies, statusCode} = res || {};
-          console.log(res);
-
-          if(statusCode == 200) resolve(data);
-          reject({ statusCode, errMsg });
-        },
-        fail: (res) => {
-          wx.showToast({ title: '请求失败，请稍后再试' });
-          reject(res);
-          console.log(res);
-        },
-        complete: () => {
-          // wx.hideLoading();
-        }
+    
+    post(api.accountSigninWechat)
+      .then(() => console.log('成功'))
+      .catch((err: any) => {
+        console.log('失败')
+        console.log(err)
       });
-    })
   }
 })
