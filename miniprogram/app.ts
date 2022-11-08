@@ -4,6 +4,7 @@
 // getApp() get instance
 
 const { post, api } = require("./api/network");
+const { LOCAL_STORAGE } = require("./storage/localStorage");
 
 App<IAppOption>({
   globalData: {
@@ -13,12 +14,10 @@ App<IAppOption>({
   },
   onLaunch() {
     // 展示本地存储能力
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
+    const userSession = wx.getStorageSync(LOCAL_STORAGE.USER_SESSION)
+   
     // 登录
-    wx.login({
+    !userSession && wx.login({
       success: res => {
         console.log("-----------")
         console.log(res.code)
@@ -28,7 +27,11 @@ App<IAppOption>({
           data: { code: res.code }
         }
         post(api.accountSigninWechat, options)
-          .then((res: any) => console.log('成功', res))
+          .then((res: any) => {
+            console.log('成功', res);
+            const { userSession } = res || {};
+            !!userSession && wx.setStorageSync(LOCAL_STORAGE.USER_SESSION, `USER_SESSION=${userSession}`)
+          })
           .catch((err: any) => {
             console.log('失败')
             console.log(err)
