@@ -86,5 +86,20 @@ Page({
 
   handleAdd: function(){
     // wx.navigateTo({ url: '/pages/create/create' });
+
+    wx.login({
+      success: res => {
+        console.log("-----------")
+        console.log(res.code)
+        wx.showModal({
+          content: res.code,
+          confirmText: '复制',
+          success: () => {
+            wx.showToast({ title: '小炯炯复制成功'});
+            wx.setClipboardData({ data: res.code });
+          },
+        })
+      }
+    })
   }
 })

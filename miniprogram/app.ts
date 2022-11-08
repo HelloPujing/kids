@@ -21,21 +21,29 @@ App<IAppOption>({
       success: res => {
         console.log("-----------")
         console.log(res.code)
+        // wx.showModal({
+        //   content: res.code,
+        //   confirmText: '复制并关闭',
+        //   complete: () => {
+        //     console.log('aaa')
+        //     wx.showToast({ title: '小炯炯复制成功'});
+        //   },
+        // })
         // code5分钟时效，是微信生成的获取用户id的凭证
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        const options = {
-          data: { code: res.code }
-        }
-        post(api.accountSigninWechat, options)
-          .then((res: any) => {
-            console.log('成功', res);
-            const { userSession } = res || {};
-            !!userSession && wx.setStorageSync(LOCAL_STORAGE.USER_SESSION, `USER_SESSION=${userSession}`)
-          })
-          .catch((err: any) => {
-            console.log('失败')
-            console.log(err)
-          });
+        // const options = {
+        //   data: { code: res.code }
+        // }
+      //   post(api.accountSigninWechat, options)
+      //     .then((res: any) => {
+      //       console.log('成功', res);
+      //       const { userSession } = res || {};
+      //       !!userSession && wx.setStorageSync(LOCAL_STORAGE.USER_SESSION, `USER_SESSION=${userSession}`)
+      //     })
+      //     .catch((err: any) => {
+      //       console.log('失败')
+      //       console.log(err)
+      //     });
       },
     })
   },
