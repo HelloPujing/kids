@@ -16,20 +16,20 @@ export type RejectType = {
 }
 
 export function request(api: string, options: OptionsType){
-    const cookie = wx.getStorageSync(LOCAL_STORAGE.USER_SESSION) || '';
-    const head = {
-      cookie
-    }
+    // const cookie = wx.getStorageSync(LOCAL_STORAGE.USER_SESSION) || '';
+    const cookie = (getApp()).globalData.cookie;
+    const header = !!cookie ? { cookie } : {};
 
   return new Promise((resolve, reject) => {
     wx.request({
       url: (getApp()).globalData.hostApi + api,
       method: options.method,
-      head,
+      header,
       data: options.method === 'GET' ? options.data : JSON.stringify(options.data),
       success: (res) => {
-        const {data: resData, errMsg, statusCode} = res || {};
-        console.log(res);
+        const {cookies, data: resData, errMsg, statusCode} = res || {};
+        const cookie = (cookies || []).find(i => i.indexOf("USER_SESSION") >= 0);
+        if(cookie) (getApp()).globalData.cookie = cookie;
   
         if(statusCode == 200) {
           const {code, message, data} = resData as ResDataType; // 业务自定义

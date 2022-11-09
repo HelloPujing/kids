@@ -3,7 +3,7 @@
 interface IAppOption {
   globalData: {
     userInfo?: WechatMiniprogram.UserInfo,
-    tempKid?: Kid,
+    cookie?: string,
     hostApi: string,
     hostCdnImage: string,
   }
