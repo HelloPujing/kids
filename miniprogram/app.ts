@@ -29,8 +29,11 @@ App<IAppOption>({
         post(api.accountSigninWechat, options)
           .then((res: any) => {
             console.log('成功', res);
-            const { userSession } = res || {};
-            !!userSession && wx.setStorageSync(LOCAL_STORAGE.USER_SESSION, `USER_SESSION=${userSession}`)
+            wx.switchTab({
+              url: '/pages/list/list',
+            })
+            // const { userSession } = res || {};
+            // !!userSession && wx.setStorageSync(LOCAL_STORAGE.USER_SESSION, `USER_SESSION=${userSession}`)
           })
           .catch((err: any) => {
             console.log('失败')

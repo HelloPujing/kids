@@ -35,7 +35,7 @@ Page({
     fullname: '',
     gender: 0,
     genders: GENDERS,
-    birth: '2020-01-01',
+    birthday: '2020-01-01',
     remark: ''
   },
   // 生命周期
@@ -63,7 +63,7 @@ Page({
     this.setData({ gender: Number(e.detail.value) });
   },
   bindDateChange: function(e) {
-    this.setData({ birth: e.detail.value })
+    this.setData({ birthday: e.detail.value })
   },
   bindRemarkChange: function(e) {
     this.setData({ remark: e.detail.value });
@@ -71,17 +71,17 @@ Page({
   bindSubmit: function(){
     // let app = getApp();
     // app.globalData.tempKid = this.data;
-    const {fullname, nickname, gender, birth, remark } = this.data;
+    const {fullname, nickname, gender, birthday, remark } = this.data;
 
     // TODO tag
     const data = {
-      fullname, nickname, gender, birthday: (new Date(birth)).getTime(), remark
+      fullname, nickname, gender, birthday: (new Date(birthday)).getTime(), remark
     }
 
     post(api.kids, { data })
     .then(res => {
       console.log('创建成功', res);
-      // wx.navigateBack();
+      wx.navigateBack();
     })
   }
 })

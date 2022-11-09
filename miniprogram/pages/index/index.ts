@@ -46,5 +46,11 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  onNameTap(){
+    console.log('------tap');
+    wx.switchTab({
+      url: '/pages/list/list',
+    })
   }
 })

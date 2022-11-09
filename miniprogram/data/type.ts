@@ -4,7 +4,7 @@ type KidBasic = {
   fullname: string,
   nickname: string,
   gender: Gender, 
-  birth: string,
+  birthday: string,
 }
 
 type Kid = KidBasic & {

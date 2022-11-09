@@ -28,9 +28,9 @@
       </view>
     </view>
     <view class="bar-wrapper">
-      <text>Birth</text>
-      <picker mode="date" value="{{birth}}" start="1900-09-01" bindchange="bindDateChange">
-        <view class="picker">{{birth}}</view>
+      <text>birthday</text>
+      <picker mode="date" value="{{birthday}}" start="1900-09-01" bindchange="bindDateChange">
+        <view class="picker">{{birthday}}</view>
       </picker>
     </view>
     <view class="bar-wrapper">

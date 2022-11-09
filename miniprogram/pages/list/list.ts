@@ -2,14 +2,14 @@ import { api, get } from "../../api/network";
 import { fmtKidList } from "./util";
 
 // pages/list/list.ts
-let KIDS = require('../../data/kids');
+// let KIDS = require('../../data/kids');
 
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    kids: undefined,
+    kids: [],
     icon_girl: 'https://kid-book.oss-cn-hangzhou.aliyuncs.com/image-sys/girl.png',
     icon_boy: 'https://kid-book.oss-cn-hangzhou.aliyuncs.com/image-sys/boy.png'
   },
@@ -18,40 +18,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-    // todo 目前仅拉取100个
-    get(api.kids, { data: { offset: 0, limit: 100 } })
-    .then((res: any) => {
-      const {data} = res || {};
-      this.setData({ kids: data || [] })
-      // console.log(res);
-    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    // add kid
-    const app = getApp();
-    const kid = app.globalData.tempKid;
-    const kids = !!kid ? [kid, ...this.data.kids] : this.data.kids;
-
-    // format kids
-    const fmtKids = fmtKidList(kids);
-
-    this.setData({
-      kids: fmtKids
-    }, () => {
-      const app = getApp();
-      app.globalData.tempKid = undefined;
-    });
+    // todo 目前仅拉取100个
+    get(api.kids, { data: { offset: 0, limit: 100 } })
+    .then((res: any) => {
+      const {data} = res || {};
+      this.setData({ kids: fmtKidList(data) || [] })
+      // console.log(res);
+    })
   },
 
   /**
