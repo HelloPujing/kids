@@ -1,3 +1,4 @@
+import { api, get } from "../../api/network";
 import { fmtKidList } from "./util";
 
 // pages/list/list.ts
@@ -8,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    kids: KIDS,
+    kids: undefined,
     icon_girl: 'https://kid-book.oss-cn-hangzhou.aliyuncs.com/image-sys/girl.png',
     icon_boy: 'https://kid-book.oss-cn-hangzhou.aliyuncs.com/image-sys/boy.png'
   },
@@ -17,6 +18,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
+    // todo 目前仅拉取100个
+    get(api.kids, { data: { offset: 0, limit: 100 } })
+    .then((res: any) => {
+      const {data} = res || {};
+      this.setData({ kids: data || [] })
+      // console.log(res);
+    })
   },
 
   /**
@@ -85,21 +93,6 @@ Page({
   },
 
   handleAdd: function(){
-    // wx.navigateTo({ url: '/pages/create/create' });
-
-    wx.login({
-      success: res => {
-        console.log("-----------")
-        console.log(res.code)
-        wx.showModal({
-          content: res.code,
-          confirmText: '复制',
-          success: () => {
-            wx.showToast({ title: '小炯炯复制成功'});
-            wx.setClipboardData({ data: res.code });
-          },
-        })
-      }
-    })
+    wx.navigateTo({ url: '/pages/create/create' });
   }
 })

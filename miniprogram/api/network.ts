@@ -1,8 +1,8 @@
-const { LOCAL_STORAGE } = require("../storage/localStorage");
+// const { LOCAL_STORAGE } = require("../storage/localStorage");
 
 type OptionsType = {
-  method: 'POST' | 'GET',
-  data: any
+  method?: 'POST' | 'GET',
+  data?: any
 }
 type ResDataType = {
   code: number,
@@ -51,11 +51,11 @@ export function request(api: string, options: OptionsType){
   })
 }
 
-export function get(api: string, options: OptionsType) {
+export function get(api: string, options?: OptionsType) {
   return request(api, {...options, method: 'GET'})
 } 
 
-export function post(api: string, options: OptionsType) {
+export function post(api: string, options?: OptionsType) {
   return request(api, {...options, method: 'POST'})
 } 
 

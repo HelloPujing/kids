@@ -1,6 +1,9 @@
 // index.ts
 // 获取应用实例
 // Pupuu https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html
+
+import { api, post } from "../../api/network";
+
 // Page({}) register data、customer data、events
 let tags = require('../../data/tags');
 
@@ -32,7 +35,8 @@ Page({
     fullname: '',
     gender: 0,
     genders: GENDERS,
-    birth: '2020-01-01'
+    birth: '2020-01-01',
+    remark: ''
   },
   // 生命周期
   onReady(){
@@ -65,8 +69,19 @@ Page({
     this.setData({ remark: e.detail.value });
   },
   bindSubmit: function(){
-    let app = getApp();
-    app.globalData.tempKid = this.data;
-    wx.navigateBack();
+    // let app = getApp();
+    // app.globalData.tempKid = this.data;
+    const {fullname, nickname, gender, birth, remark } = this.data;
+
+    // TODO tag
+    const data = {
+      fullname, nickname, gender, birthday: (new Date(birth)).getTime(), remark
+    }
+
+    post(api.kids, { data })
+    .then(res => {
+      console.log('创建成功', res);
+      // wx.navigateBack();
+    })
   }
 })
