@@ -1,7 +1,7 @@
 // const { LOCAL_STORAGE } = require("../storage/localStorage");
 
 type OptionsType = {
-  method?: 'POST' | 'GET',
+  method?: 'POST' | 'GET'  | 'DELETE',
   data?: any
 }
 type ResDataType = {
@@ -58,5 +58,9 @@ export function get(api: string, options?: OptionsType) {
 export function post(api: string, options?: OptionsType) {
   return request(api, {...options, method: 'POST'})
 } 
+
+export function del(api: string, options?: OptionsType) {
+  return request(api, {...options, method: 'DELETE'})
+}
 
 export { api } from './api';

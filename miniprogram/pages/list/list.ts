@@ -1,4 +1,4 @@
-import { api, get } from "../../api/network";
+import { api, del, get } from "../../api/network";
 import { fmtKidList } from "./util";
 
 // pages/list/list.ts
@@ -31,6 +31,10 @@ Page({
    */
   onShow() {
     // todo 目前仅拉取100个
+    this.getKidsList();
+  },
+
+  getKidsList() {
     get(api.kids, { data: { offset: 0, limit: 100 } })
     .then((res: any) => {
       const {data} = res || {};
@@ -77,7 +81,20 @@ Page({
     }
   },
 
-  handleAdd: function(){
+  handleAdd(){
     wx.navigateTo({ url: '/pages/create/create' });
+  },
+
+  handleKidLongTap(e: any) {
+    const getKidsList = this.getKidsList;
+    const { kidId, kidName } = e.currentTarget.dataset || {}
+
+    wx.showModal({
+      content: `删除${kidName}？`,
+      success() {
+        del(`${api.kids}/${kidId}`)
+        .then(() => getKidsList());
+      }
+    })
   }
 })
