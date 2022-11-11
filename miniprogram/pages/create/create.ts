@@ -2,7 +2,7 @@
 // 获取应用实例
 // Pupuu https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html
 
-import { api, get, post } from "../../api/network";
+import { api, get, put } from "../../api/network";
 
 // Page({}) register data、customer data、events
 let tags = require('../../data/tags');
@@ -43,7 +43,7 @@ Page({
   onLoad(options){
     const {kidId} = options;
     console.log(kidId);
-    get(`${api.kids}/kidId`)
+    !!kidId && get(`${api.kids}/${kidId}`)
     .then((res: any) => {
       const { id, fullname, nickname, gender, birthday, remark } = res;
       this.setData({
@@ -97,7 +97,7 @@ Page({
       builtinTagId: tagId,
     }
 
-    post(api.kids + kidId? `/${kidId}` : '', { data })
+    put(api.kids + (kidId? `/${kidId}` : ''), { data })
     .then(res => {
       console.log('创建/修改成功', res);
       wx.navigateBack();
