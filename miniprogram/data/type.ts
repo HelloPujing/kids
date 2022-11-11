@@ -10,6 +10,7 @@ type KidBasic = {
 type Kid = KidBasic & {
   id: string,
   tagId?: string,
+  builtinTagId?: string,
   parents?: string,
   remark?: string
 }

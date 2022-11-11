@@ -2,7 +2,7 @@
 // 获取应用实例
 // Pupuu https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html
 
-import { api, post } from "../../api/network";
+import { api, get, post } from "../../api/network";
 
 // Page({}) register data、customer data、events
 let tags = require('../../data/tags');
@@ -21,6 +21,7 @@ const GENDERS = [
 
 Page({
   data: {
+    kidId: '',
     nickname: '',
     tagId: '1',
     theme: '',
@@ -39,6 +40,23 @@ Page({
     remark: ''
   },
   // 生命周期
+  onLoad(options){
+    const {kidId} = options;
+    console.log(kidId);
+    get(`${api.kids}/kidId`)
+    .then((res: any) => {
+      const { id, fullname, nickname, gender, birthday, remark } = res;
+      this.setData({
+        kidId: id,
+        ...(nickname ? {nickname} : {}),
+        ...(fullname ? {fullname} : {}),
+        ...(gender ? {gender} : {}),
+        ...(birthday ? {birthday} : {}),
+        ...(remark ? {remark} : {})
+      })
+    })
+  },
+
   onReady(){
     const tag = (tags || []).find(tag => tag.id === this.data.tagId);
     const color = (tag || {}).color || '#F1857B';
@@ -71,16 +89,17 @@ Page({
   bindSubmit: function(){
     // let app = getApp();
     // app.globalData.tempKid = this.data;
-    const {fullname, nickname, gender, birthday, remark } = this.data;
+    const {kidId, fullname, nickname, gender, birthday, remark, tagId } = this.data;
 
     // TODO tag
     const data = {
-      fullname, nickname, gender, birthday: (new Date(birthday)).getTime(), remark
+      fullname, nickname, gender, birthday: (new Date(birthday)).getTime(), remark,
+      builtinTagId: tagId,
     }
 
-    post(api.kids, { data })
+    post(api.kids + kidId? `/${kidId}` : '', { data })
     .then(res => {
-      console.log('创建成功', res);
+      console.log('创建/修改成功', res);
       wx.navigateBack();
     })
   }

@@ -81,8 +81,28 @@ Page({
     }
   },
 
+  handleCode(){
+    wx.login({
+      success: res => {
+        const code = res.code;
+        wx.showModal({
+          title: '我爱你',
+          content: code,
+          confirmText: '复制',
+          success: () => {
+            wx.setClipboardData({ data: code });
+          }
+        })
+    }})
+  },
+
   handleAdd(){
     wx.navigateTo({ url: '/pages/create/create' });
+  },
+
+  handleKidTap(e: any) {
+    const { kidId } = e.currentTarget.dataset;
+    wx.navigateTo({ url: `/pages/create/create?kidId=${kidId}` });
   },
 
   handleKidLongTap(e: any) {
