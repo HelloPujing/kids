@@ -41,6 +41,6 @@
       <text>Remark</text>
       <textarea placeholder="备注" class="remark" placeholder-class="placeholder" model:value="{{remark}}" bindinput="bindRemarkChange"/>
     </view>
-    <Button class="confirm" type="primary" style="background-color: {{theme}}" bindtap="bindSubmit">测试submit</Button>
+    <Button class="confirm" type="primary" style="background-color: {{theme}}" bindtap="bindSubmit">确认</Button>
   </view>
 </view>
