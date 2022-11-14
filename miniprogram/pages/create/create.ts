@@ -23,8 +23,8 @@ Page({
   data: {
     kidId: '',
     nickname: '',
-    builtinTagId: 1,
-    theme: '',
+    builtinTagId: 1, // 默认tag
+    theme: '#F1857B', // 默认tag色
     tags: tags,
     fullname: '',
     gender: 0,
