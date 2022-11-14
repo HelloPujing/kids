@@ -1,6 +1,6 @@
 <!--pages/list/list.wxml-->
 <view class="container">
-  <button type="primary" bindtap="handleCode">获取登录code</button>
+  <button type="primary" bindtap="handleCode" style="display: none">获取登录code</button>
   <button type="primary" class="add" bindtap="handleAdd">添加儿童名片</button>
   <view wx:for="{{kids}}" wx:key="{{id}}" class="kid-bar" style="background-color: {{ item._color }}" 
   bindlongtap="handleKidLongTap" 
@@ -8,7 +8,7 @@
   data-kid-id="{{item.id}}" 
   data-kid-name="{{item.nickname}}"
   >
-    <view class="head">
+    <view class="head" style="border-color: {{ item._color }}">
     <image src="{{item.gender === 1 ? icon_boy : icon_girl}}"></image>
     </view>
     <view class="info">

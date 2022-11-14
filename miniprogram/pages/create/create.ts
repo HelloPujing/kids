@@ -2,7 +2,7 @@
 // 获取应用实例
 // Pupuu https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html
 
-import { api, get, put } from "../../api/network";
+import { api, get, post, put } from "../../api/network";
 
 // Page({}) register data、customer data、events
 let tags = require('../../data/tags');
@@ -26,13 +26,6 @@ Page({
     tagId: '1',
     theme: '',
     tags: tags,
-    category: '',
-    categories: [
-      {
-        name: '亲戚家',
-        color: '#'
-      }
-    ],
     fullname: '',
     gender: 0,
     genders: GENDERS,
@@ -97,8 +90,8 @@ Page({
       builtinTagId: tagId,
     }
 
-    put(api.kids + (kidId? `/${kidId}` : ''), { data })
-    .then(res => {
+    const req = kidId? put(api.kids + `/${kidId}`, { data }) : post(api.kids, { data })
+    req.then(res => {
       console.log('创建/修改成功', res);
       wx.navigateBack();
     })
