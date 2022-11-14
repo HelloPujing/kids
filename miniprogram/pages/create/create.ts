@@ -39,6 +39,7 @@ Page({
     !!kidId && get(`${api.kids}/${kidId}`)
     .then((res: any) => {
       const { id, fullname, nickname, builtinTagId, gender, birthday, remark } = res;
+      const birthDate = new Date(birthday);
       this.setData({
         kidId: id,
         theme: ((tags || []).find(tag => tag.id === builtinTagId) || {}).color || 'fff',
@@ -46,9 +47,8 @@ Page({
         ...(fullname ? {fullname} : {}),
         ...(builtinTagId? {builtinTagId} : {}),
         ...(gender ? {gender} : {}),
-        ...(birthday ? {birthday} : {}),
+        ...(birthday ? {birthday: `${birthDate.getFullYear()}-${birthDate.getMonth()+1}-${birthDate.getDate()}` } : {}),
         ...(remark ? {remark} : {})
-        
       })
     })
   },

@@ -16,17 +16,17 @@
     </view>
     <view class="bar-wrapper">
       <text>Fullname</text>
-      <input placeholder="全名" class="fullname-input" placeholder-class="placeholder" model:value="{{fullName}}" bindinput="bindFullnameChange"/>
+      <input placeholder="全名" class="fullname-input" placeholder-class="placeholder" model:value="{{fullname}}" bindinput="bindFullnameChange"/>
     </view>
     <view class="bar-wrapper">
       <text>Gender</text>
       <view class="gender">
         <radio-group bindchange="bindGenderChange">
           <label>
-            <radio color="{{theme}}" value="{{0}}" checked><label class="radio-girl">Girl</label></radio>
+            <radio color="{{theme}}" value="{{0}}" checked="{{gender === 0}}"><label class="radio-girl">Girl</label></radio>
           </label>
           <label>
-            <radio color="{{theme}}" value="{{1}}"><label class="radio-girl">Boy</label></radio>
+            <radio color="{{theme}}" value="{{1}}" checked="{{gender === 1}}"><label class="radio-girl">Boy</label></radio>
           </label>
         </radio-group>
       </view>
