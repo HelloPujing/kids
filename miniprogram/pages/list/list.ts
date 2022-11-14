@@ -1,4 +1,4 @@
-import { api, del, get } from "../../api/network";
+import { api, del, get, request } from "../../api/network";
 import { fmtKidList } from "./util";
 
 // pages/list/list.ts
@@ -10,6 +10,7 @@ Page({
    */
   data: {
     kids: [],
+    longtap: false,
     icon_girl: 'https://kid-book.oss-cn-hangzhou.aliyuncs.com/image-sys/girl.png',
     icon_boy: 'https://kid-book.oss-cn-hangzhou.aliyuncs.com/image-sys/boy.png'
   },
@@ -105,16 +106,22 @@ Page({
     wx.navigateTo({ url: `/pages/create/create?kidId=${kidId}` });
   },
 
-  handleKidLongTap(e: any) {
+  handleKidLongPress(e: any) {
+    this.setData({longtap: true}); // 长按锁
+
     const getKidsList = this.getKidsList;
     const { kidId, kidName } = e.currentTarget.dataset || {}
 
-    wx.showModal({
-      content: `删除${kidName}？`,
-      success() {
-        del(`${api.kids}/${kidId}`)
-        .then(() => getKidsList());
-      }
-    })
+      wx.showModal({
+        content: `删除${kidName}？`,
+        success(res) {
+          if(res.confirm){
+            del(`${api.kids}/${kidId}`)
+            .then(() => {
+              getKidsList();
+            });
+          }
+        }
+      })
   }
 })

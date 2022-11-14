@@ -3,7 +3,7 @@
   <button type="primary" bindtap="handleCode" style="display: none">获取登录code</button>
   <button type="primary" class="add" bindtap="handleAdd">添加儿童名片</button>
   <view wx:for="{{kids}}" wx:key="{{id}}" class="kid-bar" style="background-color: {{ item._color }}" 
-  bindlongtap="handleKidLongTap" 
+  bindlongpress="handleKidLongPress" 
   bindtap="handleKidTap"
   data-kid-id="{{item.id}}" 
   data-kid-name="{{item.nickname}}"
