@@ -23,7 +23,7 @@ Page({
   data: {
     kidId: '',
     nickname: '',
-    tagId: '1',
+    builtinTagId: 1,
     theme: '',
     tags: tags,
     fullname: '',
@@ -38,22 +38,22 @@ Page({
     console.log(kidId);
     !!kidId && get(`${api.kids}/${kidId}`)
     .then((res: any) => {
-      const { id, fullname, nickname, gender, birthday, remark } = res;
+      const { id, fullname, nickname, builtinTagId, gender, birthday, remark } = res;
       this.setData({
         kidId: id,
+        theme: ((tags || []).find(tag => tag.id === builtinTagId) || {}).color || 'fff',
         ...(nickname ? {nickname} : {}),
         ...(fullname ? {fullname} : {}),
+        ...(builtinTagId? {builtinTagId} : {}),
         ...(gender ? {gender} : {}),
         ...(birthday ? {birthday} : {}),
         ...(remark ? {remark} : {})
+        
       })
     })
   },
 
   onReady(){
-    const tag = (tags || []).find(tag => tag.id === this.data.tagId);
-    const color = (tag || {}).color || '#F1857B';
-     this.setData({theme: color})
   },
 
   // 事件处理函数
@@ -61,9 +61,9 @@ Page({
     this.setData({ nickname: e.detail.value });
   },
   bindTagChange: function(e, v) {
-    const {theme, value: tagId} = e.target.dataset || {};
+    const {theme, value: builtinTagId} = e.target.dataset || {};
     this.setData({
-      tagId,
+      builtinTagId,
       theme
     });
   },
@@ -82,12 +82,12 @@ Page({
   bindSubmit: function(){
     // let app = getApp();
     // app.globalData.tempKid = this.data;
-    const {kidId, fullname, nickname, gender, birthday, remark, tagId } = this.data;
+    const {kidId, fullname, nickname, gender, birthday, remark, builtinTagId } = this.data;
 
     // TODO tag
     const data = {
       fullname, nickname, gender, birthday: (new Date(birthday)).getTime(), remark,
-      builtinTagId: tagId,
+      builtinTagId,
     }
 
     const req = kidId? put(api.kids + `/${kidId}`, { data }) : post(api.kids, { data })

@@ -2,13 +2,13 @@
 <view class="container">
   <view class="main-wrapper">
     <view>
-      <input class="nickname-input" placeholder="宝贝昵称" placeholder-class="placeholder" model:value="{{nickName}}" style="background-color: {{theme}}" bindinput="bindNicknameChange" />
+      <input class="nickname-input" placeholder="宝贝昵称" placeholder-class="placeholder" model:value="{{nickname}}" style="background-color: {{theme}}" bindinput="bindNicknameChange" />
     </view>
     <view>
       <view 
       wx:for="{{tags}}" wx:key="{{index}}" 
       style="background: {{ item.color }}" 
-      class="tag {{tagId === item.id? 'selected' : ''}}" 
+      class="tag {{builtinTagId === item.id? 'selected' : ''}}" 
       bind:tap="bindTagChange"
       data-theme="{{item.color}}"
       data-value="{{item.id}}"

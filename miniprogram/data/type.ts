@@ -9,8 +9,7 @@ type KidBasic = {
 
 type Kid = KidBasic & {
   id: string,
-  tagId?: string,
-  builtinTagId?: string,
+  builtinTagId?: number,
   parents?: string,
   remark?: string
 }
@@ -22,7 +21,7 @@ type KidView = Kid & {
 }
 
 type Tag = {
-  id: string,
+  id: number,
   name: string,
   color: string
 }

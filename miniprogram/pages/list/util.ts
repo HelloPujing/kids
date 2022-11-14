@@ -13,7 +13,7 @@ export const fmtKidList = (list: KidView[]) => {
     kid._age = calcAge(new Date(kid.birthday));
     
     // fmt color
-    const index = (TAGS || []).findIndex(tag => String(tag.id) === String(kid.tagId || kid.builtinTagId));
+    const index = (TAGS || []).findIndex(tag => String(tag.id) === String(kid.builtinTagId));
     kid._color = index >= 0 ? TAGS[index].color : '#fff';
 
     // fmt grade
