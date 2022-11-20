@@ -1,4 +1,5 @@
 import { api, del, get, request } from "../../api/network";
+import { HOST_CDN_IMAGE } from "../../config/hosts";
 import { fmtKidList } from "./util";
 
 // pages/list/list.ts
@@ -11,8 +12,8 @@ Page({
   data: {
     kids: [],
     longtap: false,
-    icon_girl: 'https://kid-book.oss-cn-hangzhou.aliyuncs.com/image-sys/girl.png',
-    icon_boy: 'https://kid-book.oss-cn-hangzhou.aliyuncs.com/image-sys/boy.png'
+    icon_girl: `${HOST_CDN_IMAGE}/image-sys/girl.png`,
+    icon_boy: `${HOST_CDN_IMAGE}/image-sys/boy.png`
   },
 
   /**
@@ -62,7 +63,13 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-
+    wx.showNavigationBarLoading();
+    setTimeout(function () {
+      wx.hideNavigationBarLoading();
+      //停止下拉刷新
+      wx.stopPullDownRefresh();
+    }, 2000);
+    this.getKidsList();
   },
 
   /**

@@ -1,16 +1,13 @@
 // index.ts
+
+import { HOST_CDN_IMAGE } from "../../config/hosts"
+
 // 获取应用实例
 const app = getApp<IAppOption>()
 
 Page({
   data: {
-    motto: 'Hello World',
-    testArr: app.globalData.testArr || [],
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    canIUseGetUserProfile: false,
-    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
+    icon: `${HOST_CDN_IMAGE}/image-sys/icon.png`
   },
   // 事件处理函数
   bindViewTap() {

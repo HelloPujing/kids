@@ -14,12 +14,12 @@
       data-value="{{item.id}}"
       >{{item.name}}</view>
     </view>
-    <view class="bar-wrapper">
+    <!-- <view class="bar-wrapper">
       <text>Fullname</text>
       <input placeholder="全名" class="fullname-input" placeholder-class="placeholder" model:value="{{fullname}}" bindinput="bindFullnameChange"/>
-    </view>
+    </view> -->
     <view class="bar-wrapper">
-      <text>Gender</text>
+      <text>性别</text>
       <view class="gender">
         <radio-group bindchange="bindGenderChange">
           <label>
@@ -32,14 +32,14 @@
       </view>
     </view>
     <view class="bar-wrapper">
-      <text>birthday</text>
+      <text>生日</text>
       <picker mode="date" value="{{birthday}}" start="1900-09-01" bindchange="bindDateChange">
         <view class="picker">{{birthday}}</view>
       </picker>
     </view>
     <view class="bar-wrapper">
-      <text>Remark</text>
-      <textarea placeholder="备注" class="remark" placeholder-class="placeholder" model:value="{{remark}}" bindinput="bindRemarkChange"/>
+      <text>备注</text>
+      <textarea placeholder="全名/小名/家长名字等" class="remark" placeholder-class="placeholder" model:value="{{remark}}" bindinput="bindRemarkChange"/>
     </view>
     <Button class="confirm" type="primary" style="background-color: {{theme}}" bindtap="bindSubmit">确认</Button>
   </view>

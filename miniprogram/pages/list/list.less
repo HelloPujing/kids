@@ -40,9 +40,16 @@
   flex-grow: 1;
   align-items: center;
   justify-content: space-between;
-  .info-main{
-    font-weight: bold;
-    font-size: 32rpx;
+  .main-info{
+    display: flex;
+    flex-direction: column;
+    &>.name {
+      font-weight: bold;
+      font-size: 36rpx;
+    }
+    &>.remark {
+      font-size: 24rpx;
+    }
   }
   .side-info{
     display: inline-flex;

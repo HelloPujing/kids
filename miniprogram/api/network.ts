@@ -1,5 +1,7 @@
 // const { LOCAL_STORAGE } = require("../storage/localStorage");
 
+import { HOST_API } from '../config/hosts';
+
 type OptionsType = {
   method?: 'POST' | 'GET'  | 'DELETE' | 'PUT',
   data?: any
@@ -22,7 +24,7 @@ export function request(api: string, options: OptionsType){
 
   return new Promise((resolve, reject) => {
     wx.request({
-      url: (getApp()).globalData.hostApi + api,
+      url: HOST_API + api,
       method: options.method,
       header,
       data: options.method === 'GET' ? options.data : JSON.stringify(options.data),

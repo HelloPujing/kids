@@ -1,19 +1,32 @@
 /**index.wxss**/
-.userinfo {
+.appinfo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #aaa;
+
+  &>.app-icon {
+    overflow: hidden;
+    width: 128rpx;
+    height: 128rpx;
+    margin: 20rpx;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+  &>.app-desc {
+    margin: 0 20px;
+    font-size: 24rpx;
+    &>text.title {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #888;
+    }
+    &>text {
+      display: block;
+      color: #aaa;
+    }
+  }
 }
 
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.usermotto {
+.app-version {
   margin-top: 200px;
 }

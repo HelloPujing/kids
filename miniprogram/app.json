@@ -5,6 +5,7 @@
     "pages/create/create",
     "pages/logs/logs"
   ],
+  "subPackages": [],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
@@ -19,7 +20,7 @@
       },
       {
         "pagePath": "pages/index/index",
-        "text": "我的"
+        "text": "关于"
       }
     ]
   },

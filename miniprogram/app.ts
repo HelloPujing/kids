@@ -9,8 +9,6 @@ const { LOCAL_STORAGE } = require("./storage/localStorage");
 App<IAppOption>({
   globalData: {
     cookie: '',
-    hostApi: 'https://kid-book-api.metahmo.com/api',
-    hostCdnImage: 'kid-cdn.metahmo.com/image/sys'
   },
   onLaunch() {
     // 展示本地存储能力
