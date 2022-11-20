@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/about/about",
     "pages/list/list",
     "pages/create/create",
     "pages/logs/logs"
@@ -19,7 +19,7 @@
         "text": "儿童名片"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/about/about",
         "text": "关于"
       }
     ]

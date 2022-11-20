@@ -1,4 +1,4 @@
-// index.ts
+// about.ts
 
 import { HOST_CDN_IMAGE } from "../../config/hosts"
 
