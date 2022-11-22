@@ -1,13 +1,13 @@
 // about.ts
 
-import { HOST_CDN_IMAGE } from "../../config/hosts"
+import { HOST_CDN_IMAGE_SYS } from "../../config/hosts"
 
 // 获取应用实例
 const app = getApp<IAppOption>()
 
 Page({
   data: {
-    icon: `${HOST_CDN_IMAGE}/image-sys/icon.png`
+    icon: `${HOST_CDN_IMAGE_SYS}/image-sys/icon.png`
   },
   // 事件处理函数
   bindViewTap() {

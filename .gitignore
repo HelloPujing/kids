@@ -12,3 +12,7 @@ $RECYCLE.BIN/
 
 # Node.js
 node_modules/
+miniprogram/pages/index copy/index.json
+miniprogram/pages/index copy/index.less
+miniprogram/pages/index copy/index.ts
+miniprogram/pages/index copy/index.wxml

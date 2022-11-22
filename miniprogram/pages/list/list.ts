@@ -1,5 +1,5 @@
 import { api, del, get, request } from "../../api/network";
-import { HOST_CDN_IMAGE } from "../../config/hosts";
+import { HOST_CDN_IMAGE_SYS } from "../../config/hosts";
 import { fmtKidList } from "./util";
 
 // pages/list/list.ts
@@ -12,8 +12,8 @@ Page({
   data: {
     kids: [],
     longtap: false,
-    icon_girl: `${HOST_CDN_IMAGE}/image-sys/girl.png`,
-    icon_boy: `${HOST_CDN_IMAGE}/image-sys/boy.png`
+    icon_girl: `${HOST_CDN_IMAGE_SYS}/image-sys/girl.png`,
+    icon_boy: `${HOST_CDN_IMAGE_SYS}/image-sys/boy.png`
   },
 
   /**
