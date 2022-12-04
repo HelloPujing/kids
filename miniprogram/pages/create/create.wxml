@@ -12,7 +12,7 @@
       bind:tap="bindTagChange"
       data-theme="{{item.color}}"
       data-value="{{item.id}}"
-      >{{item.name}}</view>
+      ></view>
     </view>
     <!-- <view class="bar-wrapper">
       <text>Fullname</text>
