@@ -13,7 +13,18 @@
     </view>
     <view class="info">
       <view class="main-info">
-        <text class="name">{{item.nickname}}</text>
+        <view class="name-info">
+          <text>{{item.nickname}}</text>
+          <text 
+            class="birth-tip" 
+            wx:if="{{item._birthTip > 0}}" 
+            data-day="{{item._birthTip}}"
+            catchtap="handleKidBithTip"> 🎂</text>
+          <text 
+          class="birth-tip"
+          wx:if="{{item._birthTip === 0}}"
+          catchtap="handleKidBithTip" > 🎉</text>
+        </view>
         <text class="remark">{{item.remark}}</text>
       </view>
       <view class="side-info">

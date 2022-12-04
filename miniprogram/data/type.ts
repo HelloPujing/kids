@@ -17,7 +17,8 @@ type Kid = KidBasic & {
 type KidView = Kid & {
   _age?: string,
   _grade?: string,
-  _color?: string
+  _color?: string,
+  _birthTip?: number, // -1, 0, num
 }
 
 type Tag = {

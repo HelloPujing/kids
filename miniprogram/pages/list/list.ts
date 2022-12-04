@@ -113,6 +113,15 @@ Page({
     wx.navigateTo({ url: `/pages/create/create?kidId=${kidId}` });
   },
 
+  handleKidBithTip(e: any) {
+    const { day } = e.currentTarget.dataset;
+    if(!!day){
+      wx.showToast({ title: `生日倒计时: ${day}` });
+    }else{
+      wx.showToast({ title: '今天生日哦!' });
+    }
+  },
+
   handleKidLongPress(e: any) {
     this.setData({longtap: true}); // 长按锁
 

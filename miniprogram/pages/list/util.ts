@@ -18,6 +18,9 @@ export const fmtKidList = (list: KidView[]) => {
 
     // fmt grade
     kid._grade = calGrade(new Date(kid.birthday));
+
+    // fmt birthTip
+    kid._birthTip = calBirthTip(new Date(kid.birthday));
   });
   console.log(list);
   return list;
@@ -45,6 +48,34 @@ export const calcAge = (birthday: Date) => {
 
   if(age_y >= 1) return `${age_y} years old`;
   return `${age_m} months old`;
+}
+
+/*
+* desc: 提示当月生日
+* @param birthday
+* @return dayToBirth
+* @example
+* birthday: 2017-04-08 
+* today: xxxx-04-01
+* return: 7 （当日生日返回0；非当月或已经过了返回-1）
+* 
+*/
+export const calBirthTip = (birthday: Date) => {
+  const today = new Date();
+  const cur_m = today.getMonth() + 1;
+  const cur_d = today.getDate();
+
+  const birthday_m = birthday.getMonth() + 1;
+  const birthday_d = birthday.getDate();
+
+  console.log(cur_d, birthday_d, birthday);
+
+  if(cur_m === birthday_m){ // 当月生日
+    if(cur_d === birthday_d) return 0;
+    if(cur_d < birthday_d) return birthday_d - cur_d;
+  }
+
+  return -1;
 }
 
 /*
