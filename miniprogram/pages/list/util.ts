@@ -19,8 +19,8 @@ export const fmtKidList = (list: KidView[]) => {
     // fmt grade
     kid._grade = calGrade(new Date(kid.birthday));
 
-    // fmt birthTip
-    kid._birthTip = calBirthTip(new Date(kid.birthday));
+    // fmt birthCount
+    kid._birthCount = calBirthCount(new Date(kid.birthday));
   });
   console.log(list);
   return list;
@@ -60,7 +60,7 @@ export const calcAge = (birthday: Date) => {
 * return: 7 （当日生日返回0；非当月或已经过了返回-1）
 * 
 */
-export const calBirthTip = (birthday: Date) => {
+export const calBirthCount = (birthday: Date) => {
   const today = new Date();
   const cur_m = today.getMonth() + 1;
   const cur_d = today.getDate();

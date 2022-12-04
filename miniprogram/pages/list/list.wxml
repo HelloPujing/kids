@@ -16,14 +16,14 @@
         <view class="name-info">
           <text>{{item.nickname}}</text>
           <text 
-            class="birth-tip" 
-            wx:if="{{item._birthTip > 0}}" 
-            data-day="{{item._birthTip}}"
-            catchtap="handleKidBithTip"> 🎂</text>
+            class="birth-count" 
+            wx:if="{{item._birthCount > 0}}" 
+            data-day="{{item._birthCount}}"
+            catchtap="handleKidBithCount"> 🎂</text>
           <text 
-          class="birth-tip"
-          wx:if="{{item._birthTip === 0}}"
-          catchtap="handleKidBithTip" > 🎉</text>
+          class="birth-count"
+          wx:if="{{item._birthCount === 0}}"
+          catchtap="handleKidBithCount" > 🎉</text>
         </view>
         <text class="remark">{{item.remark}}</text>
       </view>

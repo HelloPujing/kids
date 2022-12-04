@@ -113,7 +113,7 @@ Page({
     wx.navigateTo({ url: `/pages/create/create?kidId=${kidId}` });
   },
 
-  handleKidBithTip(e: any) {
+  handleKidBithCount(e: any) {
     const { day } = e.currentTarget.dataset;
     if(!!day){
       wx.showToast({ title: `生日倒计时: ${day}` });
