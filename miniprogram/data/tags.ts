@@ -13,15 +13,15 @@ const TAGS: Tag[] = [
   },
   {
     id: 4,
-    color: '#6CD691'
+    color: '#7CB689'
   },
   {
     id: 5,
-    color: '#8DE0CA'
+    color: '#89D6C1'
   },
   {
     id: 6,
-    color: '#4AA5D1'
+    color: '#88CBEB'
   },
   {
     id: 7,
