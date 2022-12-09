@@ -3,14 +3,14 @@
   <view class="main-wrapper">
     <view class="avatar-container">
       <view class="avatar-wrapper">
-        <image 
-          class="avatar" 
+        <image
+          class="avatar"
           src="{{_avatar}}"
           mode="aspectFill"
-          bindtap="handleAvatar"
+          bindtap="handleImgPreview"
         />
-        <image 
-        class="camera" 
+        <image
+        class="camera"
         src="https://kid-book.oss-cn-hangzhou.aliyuncs.com/image-sys/camera.png"
         catchtap="handleCamera"
         />

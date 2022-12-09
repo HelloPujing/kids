@@ -71,6 +71,9 @@ Page({
       this.setData({_avatar: tempFilePath});
     })
   },
+  handleImgPreview: function() {
+    wx.previewImage({ current: this.data._avatar, urls: [this.data._avatar] });
+  },
   bindNicknameChange: function(e) {
     this.setData({ nickname: e.detail.value });
   },
