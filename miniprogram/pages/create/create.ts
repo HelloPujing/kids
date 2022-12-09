@@ -63,7 +63,13 @@ Page({
 
   // 事件处理函数
   handleCamera: function() {
-    chooseImage();
+    chooseImage()
+    .then((res: any) => {
+      const { tempFiles } = res;
+      const [imgObj] = tempFiles || [];
+      const { tempFilePath } = imgObj || {};
+      this.setData({_avatar: tempFilePath});
+    })
   },
   bindNicknameChange: function(e) {
     this.setData({ nickname: e.detail.value });

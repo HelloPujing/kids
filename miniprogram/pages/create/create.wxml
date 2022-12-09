@@ -6,6 +6,7 @@
         <image 
           class="avatar" 
           src="{{_avatar}}"
+          mode="aspectFill"
           bindtap="handleAvatar"
         />
         <image 

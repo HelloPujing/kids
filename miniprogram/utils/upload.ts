@@ -19,16 +19,18 @@ export const upload = () => {
 }
 
 export const chooseImage = () => {
-  wx.chooseMedia({
-    count: 1,
-    mediaType: ['image'],
-    sourceType: ['album', 'camera'],
-    camera: 'back',
-    success(res) {
-      console.log(res.tempFiles);
-      // console.log(res.tempFiles.size);
-      // size tempFilePath
-      
-    }
+  return new Promise((resolve, reject) => {
+    wx.chooseMedia({
+      count: 1,
+      mediaType: ['image'],
+      sourceType: ['album', 'camera'],
+      camera: 'back',
+      success(res) {
+        resolve(res);
+      },
+      fail(res){
+        reject(res)
+      }
+    })
   })
 }
