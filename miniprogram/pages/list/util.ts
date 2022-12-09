@@ -1,3 +1,5 @@
+import { genAvatarImg } from "../../utils/kidAux";
+
 const TAGS = require("../../data/tags");
 const SCHOOL_AGE_MAP = require("../../data/schoolAge");
 
@@ -21,8 +23,11 @@ export const fmtKidList = (list: KidView[]) => {
 
     // fmt birthCount
     kid._birthCount = calBirthCount(new Date(kid.birthday));
+
+    // fmt avatar
+    kid._avatar = genAvatarImg(kid);
   });
-  console.log(list);
+  // console.log(list);
   return list;
 }
 
@@ -68,7 +73,7 @@ export const calBirthCount = (birthday: Date) => {
   const birthday_m = birthday.getMonth() + 1;
   const birthday_d = birthday.getDate();
 
-  console.log(cur_d, birthday_d, birthday);
+  // console.log(cur_d, birthday_d, birthday);
 
   if(cur_m === birthday_m){ // 当月生日
     if(cur_d === birthday_d) return 0;

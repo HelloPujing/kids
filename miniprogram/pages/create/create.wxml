@@ -1,6 +1,30 @@
 <!--index.wxml-->
 <view class="container">
   <view class="main-wrapper">
+    <view class="avatar-container">
+      <view class="avatar-wrapper">
+        <image 
+          class="avatar" 
+          src="{{_avatar}}"
+          bindtap="handleAvatar"
+        />
+        <image 
+        class="camera" 
+        src="https://kid-book.oss-cn-hangzhou.aliyuncs.com/image-sys/camera.png"
+        catchtap="handleCamera"
+        />
+      </view>
+      <view class="gender">
+        <radio-group bindchange="bindGenderChange">
+          <label>
+            <radio color="{{theme}}" value="{{0}}" checked="{{gender === 0}}"><label class="radio-girl">Girl</label></radio>
+          </label>
+          <label>
+            <radio color="{{theme}}" value="{{1}}" checked="{{gender === 1}}"><label class="radio-girl">Boy</label></radio>
+          </label>
+        </radio-group>
+      </view>
+    </view>
     <view>
       <input class="nickname-input" placeholder="宝贝昵称" placeholder-class="placeholder" model:value="{{nickname}}" style="background-color: {{theme}}" bindinput="bindNicknameChange" />
     </view>
@@ -18,19 +42,7 @@
       <text>Fullname</text>
       <input placeholder="全名" class="fullname-input" placeholder-class="placeholder" model:value="{{fullname}}" bindinput="bindFullnameChange"/>
     </view> -->
-    <view class="bar-wrapper">
-      <text>性别</text>
-      <view class="gender">
-        <radio-group bindchange="bindGenderChange">
-          <label>
-            <radio color="{{theme}}" value="{{0}}" checked="{{gender === 0}}"><label class="radio-girl">Girl</label></radio>
-          </label>
-          <label>
-            <radio color="{{theme}}" value="{{1}}" checked="{{gender === 1}}"><label class="radio-girl">Boy</label></radio>
-          </label>
-        </radio-group>
-      </view>
-    </view>
+
     <view class="bar-wrapper">
       <text>生日</text>
       <picker mode="date" value="{{birthday}}" start="1900-09-01" bindchange="bindDateChange">

@@ -8,8 +8,12 @@
   data-kid-id="{{item.id}}" 
   data-kid-name="{{item.nickname}}"
   >
-    <view class="head" style="border-color: {{ item._color }}">
-    <image src="{{item.gender === 1 ? icon_boy : icon_girl}}"></image>
+    <view 
+    class="head" 
+    style="border-color: {{ item._color }}"
+    catchtap="handleAvatarTap"
+    >
+    <image src="{{item._avatar}}"></image>
     </view>
     <view class="info">
       <view class="main-info">

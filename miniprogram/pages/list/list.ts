@@ -1,5 +1,5 @@
-import { api, del, get, request } from "../../api/network";
-import { HOST_CDN_IMAGE_SYS } from "../../config/hosts";
+import { api, del, get } from "../../api/network";
+import { chooseImage } from "../../utils/upload";
 import { fmtKidList } from "./util";
 
 // pages/list/list.ts
@@ -12,8 +12,6 @@ Page({
   data: {
     kids: [],
     longtap: false,
-    icon_girl: `${HOST_CDN_IMAGE_SYS}/image-sys/girl.png`,
-    icon_boy: `${HOST_CDN_IMAGE_SYS}/image-sys/boy.png`
   },
 
   /**
@@ -106,6 +104,11 @@ Page({
 
   handleAdd(){
     wx.navigateTo({ url: '/pages/create/create' });
+  },
+
+  handleAvatarTap(e: any) {
+    // wx.navigateTo({ url: '/pages/avatar/avatar' })
+    chooseImage();
   },
 
   handleKidTap(e: any) {

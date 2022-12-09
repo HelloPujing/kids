@@ -15,6 +15,33 @@
   }
 }
 
+.avatar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-wrapper {
+  position: relative;
+  width: 300rpx;
+  height: 300rpx; 
+  background-color: #fff;
+  border-radius: 10px;
+  &>.avatar {
+    width: 100%;
+    height: 100%;
+  }
+  &>.camera {
+    position: absolute;
+    bottom: 10rpx;
+    right: 10rpx;
+    width: 50rpx;
+    height: 50rpx;
+  }
+}
+
+
 .bar-wrapper {
   display: flex;
   justify-content: space-between;
@@ -63,6 +90,7 @@
 }
 
 .gender {
+  margin-top: 20rpx;
   border-radius: 10rpx;
   background-color: #f1f1f1;;
   radio{

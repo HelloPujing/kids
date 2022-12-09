@@ -3,6 +3,8 @@
 // Pupuu https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html
 
 import { api, get, post, put } from "../../api/network";
+import { genAvatarImg } from "../../utils/kidAux";
+import { chooseImage } from "../../utils/upload";
 
 // Page({}) register data、customer data、events
 let tags = require('../../data/tags');
@@ -18,7 +20,6 @@ const GENDERS = [
   }
 ];
 
-
 Page({
   data: {
     kidId: '',
@@ -30,23 +31,27 @@ Page({
     gender: 0,
     genders: GENDERS,
     birthday: '2020-01-01',
-    remark: ''
+    remark: '',
+    profileImg: '',
+    _avatar: '',
   },
   // 生命周期
   onLoad(options){
     const {kidId} = options;
-    console.log(kidId);
+    // console.log(kidId);
     !!kidId && get(`${api.kids}/${kidId}`)
     .then((res: any) => {
-      const { id, fullname, nickname, builtinTagId, gender, birthday, remark } = res;
+      const { id, profileImg, fullname, nickname, builtinTagId, gender, birthday, remark } = res;
       const birthDate = new Date(birthday);
       this.setData({
         kidId: id,
         theme: ((tags || []).find(tag => tag.id === builtinTagId) || {}).color || 'fff',
+        ...(profileImg ? {profileImg} : {}),
+        ...(gender ? {gender} : {}),
+        _avatar: genAvatarImg(res),
         ...(nickname ? {nickname} : {}),
         ...(fullname ? {fullname} : {}),
         ...(builtinTagId? {builtinTagId} : {}),
-        ...(gender ? {gender} : {}),
         ...(birthday ? {birthday: `${birthDate.getFullYear()}-${birthDate.getMonth()+1}-${birthDate.getDate()}` } : {}),
         ...(remark ? {remark} : {})
       })
@@ -57,6 +62,9 @@ Page({
   },
 
   // 事件处理函数
+  handleCamera: function() {
+    chooseImage();
+  },
   bindNicknameChange: function(e) {
     this.setData({ nickname: e.detail.value });
   },
@@ -71,7 +79,14 @@ Page({
     this.setData({ fullname: e.detail.value });
   },
   bindGenderChange: function(e) {
-    this.setData({ gender: Number(e.detail.value) });
+    const gender = Number(e.detail.value);
+    const { _avatar } = this.data;
+    const avatar = genAvatarImg({ gender, profileImg: this.data.profileImg });
+    console.log(_avatar, avatar);
+    this.setData({ 
+      gender: Number(gender),
+      ...(_avatar !== avatar ? {_avatar: avatar} : {})
+    });
   },
   bindDateChange: function(e) {
     this.setData({ birthday: e.detail.value })
