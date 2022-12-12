@@ -6,16 +6,19 @@ export const genAvatarImg = (kid: KidWithImgInfo) => {
 
   switch(true) {
     case !!profileImg:
-      avatarImg = `${HOST_CDN_IMAGE_UGC}/${profileImg}`;
+      avatarImg = profileImg || '';
       break;
     case gender === 0:
-      avatarImg = `${HOST_CDN_IMAGE_SYS}/image-sys/girl.png`;
+      avatarImg = getGirlImg();
       break;
     case gender === 1:
     default:
-      avatarImg = `${HOST_CDN_IMAGE_SYS}/image-sys/boy.png`;
+      avatarImg = getBoyImg();
       break;
   }
   
   return avatarImg;
 }
+
+export const getGirlImg = () => `${HOST_CDN_IMAGE_UGC}/sys/girl.png`;
+export const getBoyImg = () => `${HOST_CDN_IMAGE_UGC}/sys/boy.png`;

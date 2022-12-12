@@ -38,9 +38,7 @@ export const upload = ({ img }) => {
         ossFilePath: objectKey 
       };
       console.log(ossData);
-      ossUpload(ossData);
-
-
+      ossUpload(ossData, resolve);
 
       console.log('success');
       // oss upload to objectKey
@@ -51,7 +49,7 @@ export const upload = ({ img }) => {
   })
 }
 
-const ossUpload = ({ accessId, signature, policy, ossFilePath, localFilePath }: any) => {
+const ossUpload = ({ accessId, signature, policy, ossFilePath, localFilePath }: any, resolve) => {
   const host = HOST_BUCKET_IMAGE_UGC;
   const ossAccessKeyId = accessId;
   const key = ossFilePath;
@@ -76,6 +74,8 @@ const ossUpload = ({ accessId, signature, policy, ossFilePath, localFilePath }: 
       console.log(res);
       if (res.statusCode === 204) {
         console.log('上传成功');
+        // TODO oss地址
+        resolve('地址');
       }
     },
     fail: err => {

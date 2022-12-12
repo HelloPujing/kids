@@ -3,7 +3,8 @@
 // Pupuu https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html
 
 import { api, get, post, put } from "../../api/network";
-import { genAvatarImg } from "../../utils/kidAux";
+import { HOST_CDN_IMAGE_UGC } from "../../config/hosts";
+import { genAvatarImg, getBoyImg, getGirlImg } from "../../utils/kidAux";
 import { chooseImage, upload } from "../../utils/upload";
 
 // Page({}) register data、customer data、events
@@ -29,11 +30,11 @@ Page({
     tags: tags,
     fullname: '',
     gender: 0,
+    profileImg: '',
     genders: GENDERS,
+    genderImg: getGirlImg(),
     birthday: '2020-01-01',
     remark: '',
-    profileImg: '',
-    _avatar: '',
   },
   // 生命周期
   onLoad(options){
@@ -48,7 +49,7 @@ Page({
         theme: ((tags || []).find(tag => tag.id === builtinTagId) || {}).color || 'fff',
         ...(profileImg ? {profileImg} : {}),
         ...(gender ? {gender} : {}),
-        _avatar: genAvatarImg(res),
+        genderImg: gender === 0 ? getGirlImg() : getBoyImg(),
         ...(nickname ? {nickname} : {}),
         ...(fullname ? {fullname} : {}),
         ...(builtinTagId? {builtinTagId} : {}),
@@ -68,7 +69,7 @@ Page({
       const { tempFiles } = res;
       const [imgObj] = tempFiles || [];
       const { tempFilePath } = imgObj || {};
-      this.setData({_avatar: tempFilePath});
+      this.setData({profileImg: tempFilePath});
       return upload({ img: tempFilePath });
     })
     .then(() => {
@@ -76,7 +77,8 @@ Page({
     })
   },
   handleImgPreview: function() {
-    wx.previewImage({ current: this.data._avatar, urls: [this.data._avatar] });
+    const img = this.data.profileImg || this.data.genderImg;
+    wx.previewImage({ current: img, urls: [img] });
   },
   bindNicknameChange: function(e) {
     this.setData({ nickname: e.detail.value });
@@ -93,12 +95,9 @@ Page({
   },
   bindGenderChange: function(e) {
     const gender = Number(e.detail.value);
-    const { _avatar } = this.data;
-    const avatar = genAvatarImg({ gender, profileImg: this.data.profileImg });
-    console.log(_avatar, avatar);
     this.setData({ 
       gender: Number(gender),
-      ...(_avatar !== avatar ? {_avatar: avatar} : {})
+      genderImg: gender === 0 ? getGirlImg() : getBoyImg()
     });
   },
   bindDateChange: function(e) {
@@ -110,12 +109,12 @@ Page({
   bindSubmit: function(){
     // let app = getApp();
     // app.globalData.tempKid = this.data;
-    const {kidId, fullname, nickname, gender, birthday, remark, builtinTagId, _avatar } = this.data;
+    const {kidId, fullname, nickname, gender, birthday, remark, builtinTagId, profileImg } = this.data;
 
     // TODO tag
     const data = {
       fullname, nickname, gender, birthday: (new Date(birthday)).getTime(), remark,
-      builtinTagId, profileImg: _avatar
+      builtinTagId, profileImg
     }
 
     const req = kidId? put(api.kids + `/${kidId}`, { data }) : post(api.kids, { data })
