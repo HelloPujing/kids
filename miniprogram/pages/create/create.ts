@@ -4,7 +4,7 @@
 
 import { api, get, post, put } from "../../api/network";
 import { genAvatarImg } from "../../utils/kidAux";
-import { chooseImage } from "../../utils/upload";
+import { chooseImage, upload } from "../../utils/upload";
 
 // Page({}) register data、customer data、events
 let tags = require('../../data/tags');
@@ -69,6 +69,10 @@ Page({
       const [imgObj] = tempFiles || [];
       const { tempFilePath } = imgObj || {};
       this.setData({_avatar: tempFilePath});
+      return upload({ img: tempFilePath });
+    })
+    .then(() => {
+      console.log('upload success')
     })
   },
   handleImgPreview: function() {
@@ -106,12 +110,12 @@ Page({
   bindSubmit: function(){
     // let app = getApp();
     // app.globalData.tempKid = this.data;
-    const {kidId, fullname, nickname, gender, birthday, remark, builtinTagId } = this.data;
+    const {kidId, fullname, nickname, gender, birthday, remark, builtinTagId, _avatar } = this.data;
 
     // TODO tag
     const data = {
       fullname, nickname, gender, birthday: (new Date(birthday)).getTime(), remark,
-      builtinTagId,
+      builtinTagId, profileImg: _avatar
     }
 
     const req = kidId? put(api.kids + `/${kidId}`, { data }) : post(api.kids, { data })

@@ -51,8 +51,9 @@ export const calcAge = (birthday: Date) => {
   const age_y = Math.floor(diff_y);
   const age_m = Math.floor((diff_d - age_y * 365) / 30);
 
-  if(age_y >= 1) return `${age_y} years old`;
-  return `${age_m} months old`;
+  if(age_y >= 1) return `${age_y} 岁`;
+  if(age_m === 0) return '新生儿';
+  return `${age_m} 个月`;
 }
 
 /*
