@@ -1,11 +1,14 @@
 /**app.wxss**/
+@bg: #FEFEFE; //EDEBE2
+@grid: #D7E0E1; //D7E0E1 #e1e1e1
+
 page {
-  background: #EDEBE2;
+  background:@bg; 
   background-image:
-        linear-gradient(#D7E0E1 1px, transparent 0),
-        linear-gradient(90deg, #D7E0E1 1px, transparent 0),
-        linear-gradient(#D7E0E1 1px, transparent 0),
-        linear-gradient(90deg, #D7E0E1 1px, transparent 0); 
+        linear-gradient(@grid 1px, transparent 0),
+        linear-gradient(90deg, @grid 1px, transparent 0),
+        linear-gradient(@grid 1px, transparent 0),
+        linear-gradient(90deg, @grid 1px, transparent 0); 
   background-size: 
       15px 15px,
       15px 15px,

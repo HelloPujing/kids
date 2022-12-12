@@ -1,10 +1,11 @@
 import { api, del, get } from "../../api/network";
+import { HOST_CDN_IMAGE_SYS } from "../../config/hosts";
 import { chooseImage } from "../../utils/upload";
 import { fmtKidList } from "./util";
 
 // pages/list/list.ts
 // let KIDS = require('../../data/kids');
-
+const defaultImg = `${HOST_CDN_IMAGE_SYS}/image-sys/example.png`
 Page({
   /**
    * 页面的初始数据
@@ -12,6 +13,7 @@ Page({
   data: {
     kids: [],
     longtap: false,
+    defaultImg: defaultImg
   },
 
   /**
