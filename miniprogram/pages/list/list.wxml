@@ -16,7 +16,7 @@
     class="head" 
     style="border-color: {{ item._color }}"
     >
-    <image src="{{item._avatar}}"></image>
+    <image src="{{item._avatar}}" mode="aspectFill"></image>
     </view>
     <view class="info">
       <view class="main-info">

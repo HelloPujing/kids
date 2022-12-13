@@ -6,19 +6,16 @@ const BIZ = {
   Kid: 1
 }
 
-const SUFFIX = {
-  PNG: 'PNG',
-  JPG: 'JPG',
-  JPEG: 'JPEG'
-}
-
 /*
-@param
+@param img
 @return 
 */
-export const upload = ({ img }) => {
+export const ossSign = (img: string) => {
   const bizCode = BIZ.Kid;
-  const suffix = SUFFIX.PNG;
+  const imgUrl = img || '';
+  const index = imgUrl.lastIndexOf('.');
+  const suffix = index > -1 ? imgUrl.substring(index) : 'none';
+  
   const url = `${api.mediaSignature}?biz=${bizCode}&suffix=${suffix}`
 
   return new Promise((resolve, reject) => {
@@ -37,19 +34,16 @@ export const upload = ({ img }) => {
         localFilePath: img, 
         ossFilePath: objectKey 
       };
-      console.log(ossData);
-      ossUpload(ossData, resolve);
-
-      console.log('success');
-      // oss upload to objectKey
+      // console.log(ossData);
+      resolve(ossData)
     })
     .catch(() => {
-      console.log('fail')
+      reject('getSign fail')
     })
   })
 }
 
-const ossUpload = ({ accessId, signature, policy, ossFilePath, localFilePath }: any, resolve) => {
+export const ossUpload = ({ accessId, signature, policy, ossFilePath, localFilePath }: any) => {
   const host = HOST_BUCKET_IMAGE_UGC;
   const ossAccessKeyId = accessId;
   const key = ossFilePath;
@@ -68,20 +62,24 @@ const ossUpload = ({ accessId, signature, policy, ossFilePath, localFilePath }: 
     }
   }
   console.log(ossData);
-  wx.uploadFile({
-    ...ossData,
-    success: (res) => {
-      console.log(res);
-      if (res.statusCode === 204) {
-        console.log('上传成功');
-        // TODO oss地址
-        resolve('地址');
+
+  return new Promise((resolve, reject) => {
+    wx.uploadFile({
+      ...ossData,
+      success: (res) => {
+        console.log(res);
+        if (res.statusCode === 204) {
+          console.log('上传成功');
+          const cdnUrl = `${host}/${key}`
+          resolve(cdnUrl);
+        }
+      },
+      fail: err => {
+        console.log(err);
+        reject(err);
       }
-    },
-    fail: err => {
-      console.log(err);
-    }
-  });
+    });
+  })
 }
 
 export const chooseImage = () => {

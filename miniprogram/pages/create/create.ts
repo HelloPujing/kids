@@ -3,9 +3,8 @@
 // Pupuu https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html
 
 import { api, get, post, put } from "../../api/network";
-import { HOST_CDN_IMAGE_UGC } from "../../config/hosts";
-import { genAvatarImg, getBoyImg, getGirlImg } from "../../utils/kidAux";
-import { chooseImage, upload } from "../../utils/upload";
+import { getBoyImg, getGirlImg } from "../../utils/kidAux";
+import { chooseImage, ossSign, ossUpload } from "../../utils/upload";
 
 // Page({}) register data、customer data、events
 let tags = require('../../data/tags');
@@ -70,10 +69,12 @@ Page({
       const [imgObj] = tempFiles || [];
       const { tempFilePath } = imgObj || {};
       this.setData({profileImg: tempFilePath});
-      return upload({ img: tempFilePath });
+      return ossSign(tempFilePath)
+      .then((res) => ossUpload(res))
     })
-    .then(() => {
-      console.log('upload success')
+    .then((ossUrl) => {
+      console.log('upload success');
+      this.setData({profileImg: ossUrl as string});
     })
   },
   handleImgPreview: function() {
