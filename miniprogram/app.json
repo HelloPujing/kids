@@ -31,5 +31,6 @@
   "style": "v2",
   "darkmode": true,
   "debug": true,
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
 }
