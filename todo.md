@@ -1,0 +1,5 @@
+- 封装wx.request
+  - loading
+  - method
+  - complete
+- 
